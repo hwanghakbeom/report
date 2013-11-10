@@ -119,7 +119,7 @@
 			<div class="row">
 				<h2>CPU Time Rate Graph</h2>
 			</div>
-			<button id="sort" onclick="sortBars()">Sort</button>
+					    <button id="sort" onclick="sortBars()">Sort</button>
 		    <button id="reset" onclick="reset()">Reset</button>
 		    <div id="cpu_bars">
 		</div>
@@ -150,7 +150,13 @@
 									<td><%= trace_method.sum_time_rate %></td> -->
 									<td width="20%">
 									<div class="fancyprogress">
-								  <span class="orange" style="width: <%= trace_method.usecs.to_i *  100/ 352 %>%;"><span><%= trace_method.usecs %></span></span>
+									<% percent = trace_method.usecs.to_i *  100/ @trace_methods.max_by { |x| x.usecs }.usecs  %>
+									<% if percent > 75 then color = "red" %>
+									<% elsif percent > 50 then color = "orange" %>
+									<% elsif percent > 25 then color = "blue" %>
+									<% elsif color ="green" %>
+									<% end %>
+								  <span class=" <%= color %>" style="width: <%= percent %>%;"><span><%= trace_method.usecs %></span></span>
 							    </div></td>
 								</tr>
 							<% end  %>
@@ -162,9 +168,9 @@
 
 	</div>	
 </div>
- <script src="d3.v3.min.js"></script>
+ <script src="/assets/d3.v3.min.js"></script>
 		<script type="text/javascript">
-		var w = 1000;
+		var w = 900;
 		var h = 250;
 
 		var dataset = [ 
@@ -305,6 +311,7 @@
 		    });
 		};
 		// Add the onclick callback to the button
+		d3.select("cpuinput").on("click", sortBars);
 		d3.select("#sort").on("click", sortBars);
 		d3.select("#reset").on("click", reset);
 		function randomSort() {
