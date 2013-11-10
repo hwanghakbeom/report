@@ -42,7 +42,8 @@
   right: 0;
   z-index: 1;
   height: 25px;
-  background: url('../images/progress.png') 0 0 repeat-x;
+  background: url( <%= asset_path 'progress.png' %>) 0 0 repeat-x;
+
   border-radius: 10px;
 }
 .fancyprogress .green {
@@ -106,15 +107,17 @@
 							<tr>
 								<td>App Version</td>
 								<td class="in-checkbox">
-									<input type="checkbox" class="icheck" checked id="icheck1">
+									<button style="width:100%">
+									<!-- <input type="checkbox" class="icheck" checked id="icheck1"> -->
 									<label for="icheck1">All</label>
+									</button>
 								</td>
 								<td colspan="4">
 							    <div class="fancyprogress">
 							    <% firstversion = 40 %>
 							    <% secondversion = 20 %>
 							    <% thirdversion = 40 %>
-								  <span class="green" style="width: <%= firstversion %>%;"><span>1.5</span></span>
+								  <span onclick="javascript:alert(1)" class="green" style="width: <%= firstversion %>%;"><span>1.5</span></span>
 							      <span class="orange" style="width: <%= secondversion %>%;"><span>1.6</span></span>
 							      <span class="blue" style="width: <%= thirdversion %>%;"><span>1.8</span></span>
 							    </div>
@@ -123,8 +126,10 @@
 							<tr>
 								<td>OS Version</td>
 								<td class="in-checkbox">
-									<input type="checkbox" class="icheck" checked id="icheck1">
+								<button style="width:100%">
+									<!-- <input type="checkbox" class="icheck" checked id="icheck1"> -->
 									<label for="icheck1">All</label>
+									</button>
 								</td>
 								<td colspan="4">
 							    <div class="fancyprogress">
@@ -140,24 +145,26 @@
 							<tr>
 								<td>Category</td>
 								<td class="in-checkbox">
-									<input type="checkbox" class="icheck" checked id="icheck1">
+								<!-- 	<input type="checkbox" class="icheck" checked id="icheck1"> -->
+								<button style="width:100%">
 									<label for="icheck1">All</label>
+									</button>
 								</td>
 								<td class="in-checkbox">
 									<input type="checkbox" class="icheck" id="icheck2">
-									<label for="icheck2">Memory</label>
+									<label for="icheck2">									<%= image_tag("Memory-icon.png", :size => "48x48", :alt => "Edit Entry") %> Memory</label>
 								</td>
 								<td class="in-checkbox">
 									<input type="checkbox" class="icheck" id="icheck3">
-									<label for="icheck2">CPU</label>
+									<label for="icheck2"><%= image_tag("kcm-processor-icon.png", :size => "48x48", :alt => "Edit Entry") %> CPU</label>
 								</td>
 								<td class="in-checkbox">
 									<input type="checkbox" class="icheck" id="icheck3">
-									<label for="icheck2">Network</label>
+									<label for="icheck2"> <%= image_tag("Devices-network-wireless-connected-100-icon.png", :size => "48x48", :alt => "Edit Entry")%>Network</label>
 								</td>
 								<td class="in-checkbox">
 									<input type="checkbox" class="icheck" id="icheck3">
-									<label for="icheck2">Battery</label>
+									<label for="icheck2"> <%= image_tag("Battery-icon.png", :size => "48x48", :alt => "Edit Entry")  %>Battery</label>
 								</td>
 							</tr>
 							<tr>
@@ -207,7 +214,12 @@
 								<tr>
 									<td></td>
 									<td><%= link_to report.appversion, [@project, report] %></td>
-									<td><%= report.categories %></td>
+									<td>
+									<%= image_tag("Memory-icon.png", :size => "48x48", :alt => "Edit Entry")  if report.categories.include? 'Memory'%>
+									<%= image_tag("kcm-processor-icon.png", :size => "48x48", :alt => "Edit Entry")  if report.categories.include? 'CPU'%>
+									<%= image_tag("Devices-network-wireless-connected-100-icon.png", :size => "48x48", :alt => "Edit Entry") if report.categories.include? 'Network' %>
+									<%= image_tag("Battery-icon.png", :size => "48x48", :alt => "Edit Entry") if report.categories.include? 'Battery'  %>
+									</td>
 									<td>Status</td>
 									<td><%= report.time_for_profiling %></td>
 									<td><%= report.created_at_date %></td>
