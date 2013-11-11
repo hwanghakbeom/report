@@ -64,7 +64,7 @@
 						<thead>
 							<tr>
 								<td style="width:10px;"></td>
-								<td>Scenario</td>
+								<td><strong style="font-size: 15px;">Scenario</strong></td>
 								<td style="width:150px;">Memory Leak Suspect</td>
 								<td style="width:150px;">CPU Usage</td>
 								<td style="width:150px;">Network Latency</td>
@@ -76,7 +76,7 @@
 							<% @scenarios.each.with_index do |s, i| %>
 								<tr>
 									<td></td>
-									<td><h3><%= s.name %></h3>
+									<td style="vertical-align:middle"><strong style="font-size: 25px;"><%= s.name %></strong>
 										<p><%= s.description %></p>
 									</td>
 									<td><div id="g<%= i %>1" class='g'></div></td>

@@ -6278,8 +6278,7 @@ i {
 h1, h2, h3, h4, h5, h6, th {
   color: #5f5f5f;
   font-weight: 600; 
-  line-height: 2em;
-}
+  line-height: 2em;}
 
 /* line 101, /home/andrei/core-admin-release/core-admin/source/stylesheets/base.scss */
 .the-icons {
@@ -15981,29 +15980,35 @@ a.editable-click.editable-disabled {
   .chat-box.timeline + .closable-chat-box {
     margin-left: 0; } }
 /*
++/* Override Section */
+  
+ .version h2{
+   margin:0;
+   line-height: 1em;
+ }
+  
+  
+ #dataList td{
+   padding: 16px
+ }
+
+ /* dataList Icon */
+ #dataList img{
+   width: 30px;
+   height: 30px;
+   margin-right: 10px;
+ }
 
 
 
 
 
-/* Override Section */
-
-.version h2{
-  margin:0;
-  line-height: 1em;
-}
 
 
-#dataList td{
-  padding: 16px
-}
 
-/* dataList Icon */
-#dataList img{
-  width: 30px;
-  height: 30px;
-  margin-right: 10px;
-}
+
+
+
 
 
 

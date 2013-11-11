@@ -1,9 +1,3 @@
-<script type="text/javascript" >
-function myFunction(clicked_id)
-{
-	alert("clicked")
-}
-</script>
 <div class="container">
 	<div class="add">
 		<%= link_to "#modal-project-new", class: "btn btn-large btn-default add-project-button", data: {toggle: "modal"} do %>
@@ -44,13 +38,12 @@ function myFunction(clicked_id)
 
 					<% @projects.each do |p| %>
 						<div class="col-md-12" onclick="myFunction()">
+						<%= link_to p do %>
 							<div class="box">
 								<div class="box-content padded">
 									<div class="row">
 										<div id="item" class="col-md-6">
-											<%= link_to p do %>
-												<p><%= p.name %></p>
-											<% end  %>
+											<p style="font-size: 15pt"><b><%= p.name %></b></p>
 										</div>
 										<div class="col-md-4">
 <!-- 											<i class="icon-signal"></i> -->
@@ -73,6 +66,7 @@ function myFunction(clicked_id)
 									</div>
 								</div>
 							</div>
+						<% end  %>
 						</div>
 					<% end %>
 
