@@ -215,10 +215,10 @@
 									<td></td>
 									<td><%= link_to report.appversion, [@project, report] %></td>
 									<td>
-									<%= image_tag("Memory-icon.png", :size => "48x48", :alt => "Edit Entry")  if report.categories.include? 'Memory'%>
-									<%= image_tag("kcm-processor-icon.png", :size => "48x48", :alt => "Edit Entry")  if report.categories.include? 'CPU'%>
-									<%= image_tag("Devices-network-wireless-connected-100-icon.png", :size => "48x48", :alt => "Edit Entry") if report.categories.include? 'Network' %>
-									<%= image_tag("Battery-icon.png", :size => "48x48", :alt => "Edit Entry") if report.categories.include? 'Battery'  %>
+									<%= image_tag("Memory-icon.png", :alt => "Edit Entry")  if report.categories.include? 'Memory'%>
+									<%= image_tag("kcm-processor-icon.png", :alt => "Edit Entry")  if report.categories.include? 'CPU'%>
+									<%= image_tag("Devices-network-wireless-connected-100-icon.png", :alt => "Edit Entry") if report.categories.include? 'Network' %>
+									<%= image_tag("Battery-icon.png", :alt => "Edit Entry") if report.categories.include? 'Battery'  %>
 									</td>
 									<td>Status</td>
 									<td><%= report.time_for_profiling %></td>
